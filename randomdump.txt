@@ -1,0 +1,68 @@
+<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+ codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=10,0,0,0"
+ id="playerArte"
+ allowScriptAccess="always"
+ width="450" 
+height="303" >
+<param name="allowFullScreen" value="true" />
+<param name="allowScriptAccess" value="always" />
+<param name="quality" value="high">
+<param name="movie" 
+value="
+http://videos.arte.tv/videoplayer.swf?lang=fr&admin=false&configFileUrl=http%3A%2F%2Fvideos%2Earte%2Etv%2Fcae%2Fstatic%2Fflash%2Fplayer%2Fconfig%2Exml&mode=prod&autoPlay=false&videoId=3596906&videorefFileUrl=http%3A%2F%2Fvideos%2Earte%2Etv%2Ffr%2Fdo%5Fdelegate%2Fvideos%2Fpacifique%5Fsud%2D3596906%2Cview%2CasPlayerXml%2Exml&localizedPathUrl=http%3A%2F%2Fvideos%2Earte%2Etv%2Fcae%2Fstatic%2Fflash%2Fplayer%2F&embed=true&autoPlay=false
+embed 
+src="
+http://videos.arte.tv/videoplayer.swf?
+lang=fr&
+admin=false&
+configFileUrl=http%3A%2F%2Fvideos%2Earte%2Etv%2Fcae%2Fstatic%2Fflash%2Fplayer%2Fconfig%2Exml&
+mode=prod&autoPlay=false&
+videoId=3596906&
+videorefFileUrl=http%3A%2F%2Fvideos%2Earte%2Etv%2Ffr%2Fdo%5Fdelegate%2Fvideos%2Fpacifique%5Fsud%2D3596906%2Cview%2CasPlayerXml%2Exml&
+localizedPathUrl=http%3A%2F%2Fvideos%2Earte%2Etv%2Fcae%2Fstatic%2Fflash%2Fplayer%2F&
+embed=true&
+autoPlay=false"
+ width="450" height="303" allowFullScreen="true"
+ name="playerArte" quality="high" 
+allowScriptAccess="always" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash"></embed></object>
+
+
+http://videos.arte.tv/fr/do_delegate/videos/pacifique_sud-3596906,view,asPlayerXml.xml
+
+/medialog.arte.tv/doLog?securityCheck=957HOP79HSPJX&eId=3235576&tCode=4%2E736&eName=Giordano%20Hebdo&dt=0&action=PLAY&aCtx=VIDEOTHEK%2DPLAYER&sLogId=1275135211187&logPlay=false
+
+http://logi104.xiti.com/hit.xiti?p=vide ... video&m8=9
+
+http://logi104.xiti.com/hit.xiti?p=vide ... l=14x23x59
+
+http://logi104.xiti.com/w3c/p3p.xml
+
+http://medialog.arte.tv/doLog?securityC ... Play=false
+
+http://medialog.arte.tv/doLog?securityC ... Play=false
+
+http://logi104.xiti.com/hit.xiti?p=vide ... l=14x24x04
+ppts
+vagabond du web
+
+ 
+Messages: 13
+Inscription: Sam Mai 29, 2010 11:15 am
+
+
+<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" 
+codebase="
+http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=10,0,0,0" 
+id="playerArte" 
+allowScriptAccess="always" width="640" height="410" >
+<param name="allowFullScreen" value="true" />
+<param name="allowScriptAccess" value="always" />
+<param name="quality" value="high">
+<param name="movie" value="
+http://videos.arte.tv/videoplayer.swf?
+configFileUrl=http%3A%2F%2Fvideos%2Earte%2Etv%2Fcae%2Fstatic%2Fflash%2Fplayer%2Fconfig%2Exml&
+localizedPathUrl=http%3A%2F%2Fvideos%2Earte%2Etv%2Fcae%2Fstatic%2Fflash%2Fplayer%2F&
+autoPlay=false&
+mode=prod&
+videoId=3596906&
+videorefFileUrl=http%3A%2F%2Fvideos%2Earte%2Etv%2Ffr%2Fdo%5Fdelegate%2Fvideos%2Fpacifique%5Fsud%2D3596906%2Cview%2CasPlayerXml%2Exml&lang=fr&admin=false&embed=true&autoPlay=false"><embed src="http://videos.arte.tv/videoplayer.swf?configFileUrl=http%3A%2F%2Fvideos%2Earte%2Etv%2Fcae%2Fstatic%2Fflash%2Fplayer%2Fconfig%2Exml&localizedPathUrl=http%3A%2F%2Fvideos%2Earte%2Etv%2Fcae%2Fstatic%2Fflash%2Fplayer%2F&autoPlay=false&mode=prod&videoId=3596906&videorefFileUrl=http%3A%2F%2Fvideos%2Earte%2Etv%2Ffr%2Fdo%5Fdelegate%2Fvideos%2Fpacifique%5Fsud%2D3596906%2Cview%2CasPlayerXml%2Exml&lang=fr&admin=false&embed=true&autoPlay=false" width="640" height="410" allowFullScreen="true" name="playerArte" quality="high" allowScriptAccess="always" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash"></embed></object>

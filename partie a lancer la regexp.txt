@@ -1,0 +1,8 @@
+<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=10,0,0,0"
+id="playerArte" allowScriptAccess="always" width="450" height="303" >
+<param name="allowFullScreen" value="true" /><param name="allowScriptAccess" value="always" /><param name="quality" value="high">
+<param name="movie" value="http://videos.arte.tv/videoplayer.swf?videorefFileUrl=http%3A%2F%2Fvideos%2Earte%2Etv%2Ffr%2Fdo%5Fdelegate%2Fvideos%2Ftracks%2D3589504%2Cview%2CasPlayerXml%2Exml&admin=false&autoPlay=true&mode=prod&configFileUrl=http%3A%2F%2Fvideos%2Earte%2Etv%2Fcae%2Fstatic%2Fflash%2Fplayer%2Fconfig%2Exml&videoId=3589504&lang=fr&localizedPathUrl=http%3A%2F%2Fvideos%2Earte%2Etv%2Fcae%2Fstatic%2Fflash%2Fplayer%2F&embed=true&autoPlay=false">
+<embed src="http://videos.arte.tv/videoplayer.swf?videorefFileUrl=http%3A%2F%2Fvideos%2Earte%2Etv%2Ffr%2Fdo%5Fdelegate%2Fvideos%2Ftracks%2D3589504%2Cview%2CasPlayerXml%2Exml&admin=false&autoPlay=true&mode=prod&configFileUrl=http%3A%2F%2Fvideos%2Earte%2Etv%2Fcae%2Fstatic%2Fflash%2Fplayer%2Fconfig%2Exml&videoId=3589504&lang=fr&localizedPathUrl=http%3A%2F%2Fvideos%2Earte%2Etv%2Fcae%2Fstatic%2Fflash%2Fplayer%2F&embed=true&autoPlay=false" width="450" height="303" allowFullScreen="true" name="playerArte"  quality="high" allowScriptAccess="always" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash">
+</embed>
+</object>

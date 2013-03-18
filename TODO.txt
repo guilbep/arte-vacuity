@@ -1,0 +1,11 @@
+USE librtmp
+USE libcurl
+USE libopenssl
+
+Name of the show.
+Date et heure -> retourne les show a cette heure, selection de l'utilisateur
+Presentation sous forme de liste avec boite à cocher.
+
+Telechargement en flv puis traduction en mp4
+
+rtmp://artestras.fcod.llnwd.net/a3903/o35/MP4:geo/videothek/EUR_DE_FR/arteprod/A7_SGT_ENC_08_043670-001-A_PG_HQ_FR?h=59c610e9d81fd416f49350aaa2f10b01

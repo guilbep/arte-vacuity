@@ -1,0 +1,213 @@
+########################################################
+
+                       __              __                  
+                      /\ \            /\ \                 
+  ___ ___      __     \_\ \     __    \ \ \____  __  __    
+/' __` __`\  /'__`\   /'_` \  /'__`\   \ \ '__`\/\ \/\ \   
+/\ \/\ \/\ \/\ \L\.\_/\ \L\ \/\  __/    \ \ \L\ \ \ \_\ \  
+\ \_\ \_\ \_\ \__/.\_\ \___,_\ \____\    \ \_,__/\/`____ \ 
+ \/_/\/_/\/_/\/__/\/_/\/__,_ /\/____/     \/___/  `/___/> \
+                                                     /\___/
+                                                     \/__/ 
+                   ___    __                        
+               __ /\_ \  /\ \                       
+   __   __  __/\_\\//\ \ \ \ \____     __   _____   
+ /'_ `\/\ \/\ \/\ \ \ \ \ \ \ '__`\  /'__`\/\ '__`\ 
+/\ \L\ \ \ \_\ \ \ \ \_\ \_\ \ \L\ \/\  __/\ \ \L\ \
+\ \____ \ \____/\ \_\/\____\\ \_,__/\ \____\\ \ ,__/
+ \/___L\ \/___/  \/_/\/____/ \/___/  \/____/ \ \ \/ 
+   /\____/                                    \ \_\ 
+   \_/__/                                      \/_/ 
+
+########################################################
+
+ARTE +7 only/seulement
+
+HOWTO:
+
+WHAT YOU NEED:
+rtmpdump and some skills
+WHERE TO FIND IT:
+If you have a package manager do as follow (aptitude (ubuntu) - port(macOS) - etc..)
+example:
+sudo apt-get install rtmpdump
+sudo port install rtmpdump
+
+If you don't have one you can find it on the internet easily (google)
+
+ONCE YOU HAVE rtmpdump:
+
+We need to find to thing:
+ 	the url of the sfw player
+	the url of the rtmp file
+
+Go to the url page where you want to extract the video:
+Example:
+http://videos.arte.tv/fr/videos/pacifique_sud-3596906.html
+
+TO FIND THE SFW URL:
+--------------------
+look at the source of the url.
+ Do a search for 'blob'
+you'll find something like this:
+"<param name="movie" value="http://videos.arte.tv/blob/web/i18n/view/player_11-3188338-data-4836231.swf?admin=false&amp;a ...."
+or
+"/* <![CDATA[ */
+videopageSettings = {
+shareTrackingUrl: "/fr/do_tracking/videos/pacifique_sud-3596910,view,trackingPixel.gif?type=share"
+};
+var url_player = "http://videos.arte.tv/blob/web/i18n/view/player_11-3188338-data-4836231.swf";
+var vars_player = {};
+vars....
+...
+"
+
+Take the url_player value:
+Here we have:
+###########################################################################
+http://videos.arte.tv/blob/web/i18n/view/player_11-3188338-data-4836231.swf
+###########################################################################
+
+This is the first thing we needed.
+
+TO FIND THE RTMP URL: .. fuck we need to find another way to find this
+--------------------
+##
+Intégrer est de la forme:
+ "<li class="embed"><span class="exportTrigger">Intégrer</span></li>"
+We need to find the javascript that do the exportTrigger thing
+
+
+Is all the urls like those:
+http://videos.arte.tv/videoplayer.swf?videorefFileUrl=http://videos.arte.tv/fr/do_delegate/videos/pacifique_sud-3596906,view,asPlayerXml.xml&admin=false&autoPlay=true&mode=prod&configFileUrl=http://videos.arte.tv/cae/static/flash/player/config.xml&videoId=3596906&lang=fr&localizedPathUrl=http://videos.arte.tv/cae/static/flash/player/&embed=true&autoPlay=false
+
+
+
+
+http://videos.arte.tv/videoplayer.swf?videorefFileUrl=http://videos.arte.tv/fr/do_delegate/videos/arte-journal--7060752,view,asPlayerXml.xml&admin=false&autoPlay=true&mode=prod&configFileUrl=http://videos.arte.tv/cae/static/flash/player/config.xml&videoId= 7060752&lang=fr&localizedPathUrl=http://videos.arte.tv/cae/static/flash/player/&embed=true&autoPlay=false
+
+
+###
+===> 
+Click on the 'Integrer' button
+
+Retrieve the embeded code and past it somewhere (notepad . etc..)
+You'll have something like this.
+
+<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" 
+		codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=10,0,0,0" 
+		id="playerArte"
+		allowScriptAccess="always" 
+		width="640"
+		height="410" >
+<param name="allowFullScreen" value="true" />
+<param name="allowScriptAccess" value="always" />
+<param name="quality" value="high">
+<param	  name="movie"
+		  value="http://videos.arte.tv/videoplayer.swf?videorefFileUrl=http%3A%2F%2Fvideos%2Earte%2Etv%2Ffr%2Fdo%5Fdelegate%2Fvideos%2Fpacifique%5Fsud%2D3596906%2Cview%2CasPlayerXml%2Exml&admin=false&autoPlay=true&mode=prod&configFileUrl=http%3A%2F%2Fvideos%2Earte%2Etv%2Fcae%2Fstatic%2Fflash%2Fplayer%2Fconfig%2Exml&videoId=3596906&lang=fr&localizedPathUrl=http%3A%2F%2Fvideos%2Earte%2Etv%2Fcae%2Fstatic%2Fflash%2Fplayer%2F&embed=true&autoPlay=false">
+	<embed	src="http://videos.arte.tv/videoplayer.swf?videorefFileUrl=http%3A%2F%2Fvideos%2Earte%2Etv%2Ffr%2Fdo%5Fdelegate%2Fvideos%2Fpacifique%5Fsud%2D3596906%2Cview%2CasPlayerXml%2Exml&admin=false&autoPlay=true&mode=prod&configFileUrl=http%3A%2F%2Fvideos%2Earte%2Etv%2Fcae%2Fstatic%2Fflash%2Fplayer%2Fconfig%2Exml&videoId=3596906&lang=fr&localizedPathUrl=http%3A%2F%2Fvideos%2Earte%2Etv%2Fcae%2Fstatic%2Fflash%2Fplayer%2F&embed=true&autoPlay=false"
+	 		width="640"
+	 		height="410" 
+			allowFullScreen="true"
+			name="playerArte"
+		 	quality="high"
+		 	allowScriptAccess="always"
+			pluginspage="http://www.macromedia.com/go/getflashplayer"
+			type="application/x-shockwave-flash">
+	</embed>
+</object>
+
+THEN FIND THE LINE: <embed src="...">
+
+Decode the URL on this line using a website "http://meyerweb.com/eric/tools/dencoder/" or a program of your own using curl_easy_unescape library function
+Here is a rapid example: "http://joysofprogramming.com/url-decode-cpp-curl_easy_unescape/" or any decodeurl software
+
+the url:
+
+http%3A%2F%2Fvideos.arte.tv%2Fvideoplayer.swf%3FvideorefFileUrl%3Dhttp%3A%2F%2Fvideos.arte.tv%2Ffr%2Fdo_delegate%2Fvideos%2Fpacifique_sud-3596906%2Cview%2CasPlayerXml.xml%26admin%3Dfalse%26autoPlay%3Dtrue%26mode%3Dprod%26configFileUrl%3Dhttp%3A%2F%2Fvideos.arte.tv%2Fcae%2Fstatic%2Fflash%2Fplayer%2Fconfig.xml%26videoId%3D3596906%26lang%3Dfr%26localizedPathUrl%3Dhttp%3A%2F%2Fvideos.arte.tv%2Fcae%2Fstatic%2Fflash%2Fplayer%2F%26embed%3Dtrue%26autoPlay%3Dfalse
+
+Once decoded you'll have something like this:
+http://videos.arte.tv/videoplayer.swf?videorefFileUrl=http://videos.arte.tv/fr/do_delegate/videos/pacifique_sud-3596906,view,asPlayerXml.xml&admin=false&autoPlay=true&mode=prod&configFileUrl=http://videos.arte.tv/cae/static/flash/player/config.xml&videoId=3596906&lang=fr&localizedPathUrl=http://videos.arte.tv/cae/static/flash/player/&embed=true&autoPlay=false
+
+Find the value of the videorefFileUrl parameter. Here we have:
+
+http://videos.arte.tv/fr/do_delegate/videos/pacifique_sud-3596906,view,asPlayerXml.xml
+
+Look at the src of this file
+
+<?xml version="1.0" encoding="UTF-8"?> 
+<videoref id="3596906"> 
+<url>http://videos.arte.tv/fr/videos/pacifique_sud-3596906.html</url> 
+<videos> 
+<video lang="de" ref="http://videos.arte.tv/de/do_delegate/videos/die_suedsee_1_5_-3596908,view,asPlayerXml.xml"/> 
+<video lang="fr" ref="http://videos.arte.tv/fr/do_delegate/videos/pacifique_sud-3596910,view,asPlayerXml.xml"/> 
+</videos> 
+<subtitles> 
+</subtitles> 
+<services> 
+<service name="fullscreen" allow="true" allowEmbedded="true" /> 
+<service name="share" allow="true" allowEmbedded="true" /> 
+<service name="embed" allow="true" allowEmbedded="true" /> 
+<service name="info" allow="false" allowEmbedded="true" /> 
+</services> 
+<embed> 
+<disallow>defrancisation.com</disallow> 
+</embed> 
+</videoref>
+
+Then take the 'fr'; or 'de' ref url (xml)
+Here we have:
+
+http://videos.arte.tv/fr/do_delegate/videos/pacifique_sud-3596910,view,asPlayerXml.xml
+
+look at the src of this file.
+
+We'll have something like:
+
+<?xml version="1.0" encoding="UTF-8"?> 
+<video id="3596910" lang="fr" playerLogo="ON"> 
+<name>Pacifique Sud</name> 
+<url>http://videos.arte.tv/fr/videos/pacifique_sud-3596906.html</url> 
+<firstThumbnailUrl>http://videos.arte.tv/image/web/i18n/view/20_12_10_sudsee_trauminsel_jpg_1-3601254-imageData-4870168,h,406,w,720.jpg</firstThumbnailUrl> 
+<dateExpiration>Mon, 27 Dec 2010 19:57:14 +0100</dateExpiration> 
+<dateVideo>Mon, 20 Dec 2010 19:57:14 +0100</dateVideo> 
+<numberOfViews>1707</numberOfViews> 
+<rating>4.9286</rating> 
+<urls> 
+<url quality="sd">rtmp://artestras.fcod.llnwd.net/a3903/o35/MP4:geo/videothek/EUR_DE_FR/arteprod/A7_SGT_ENC_06_043670-001-A_PG_MQ_FR?h=caad79c7b658c6ff53220d3fcb276785</url> 
+<url quality="hd">rtmp://artestras.fcod.llnwd.net/a3903/o35/MP4:geo/videothek/EUR_DE_FR/arteprod/A7_SGT_ENC_08_043670-001-A_PG_HQ_FR?h=59c610e9d81fd416f49350aaa2f10b01</url> 
+</urls>
+....
+
+...
+..
+</video>
+
+Take the hd or sd rtmp link.
+Here we have:
+###########################################################################
+rtmp://artestras.fcod.llnwd.net/a3903/o35/MP4:geo/videothek/EUR_DE_FR/arteprod/A7_SGT_ENC_08_043670-001-A_PG_HQ_FR?h=59c610e9d81fd416f49350aaa2f10b01
+###########################################################################
+This was the last thing we needed.
+
+Now we can use rtmpdump to download the video.
+
+We use the program in the commandline as follow
+
+rtmpdump -r "rtmp://..." -o output.flv -W "http://videos.arte.tv/blob/web/i18n/view/....swf"
+
+It'll look like:
+
+rtmpdump 	-r "rtmp://artestras.fcod.llnwd.net/a3903/o35/MP4:geo/videothek/EUR_DE_FR/arteprod/A7_SGT_ENC_08_043670-001-A_PG_HQ_FR?h=59c610e9d81fd416f49350aaa2f10b01"
+			-o Titre.flv
+			-W "http://videos.arte.tv/blob/web/i18n/view/player_11-3188338-data-4836231.swf"
+			
+
+
+http://videos.arte.tv/blob/web/i18n/view/player_23-3188338-data-4993762.swf
+Then you'll wait until the download is complete.
+
+
+BRAVO!! You can watch your video on VLC ! or any flv player.
+
+

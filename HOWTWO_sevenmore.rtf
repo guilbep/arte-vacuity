@@ -1,0 +1,181 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1187\cocoasubrtf340
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+
+\f0\fs24 \cf0 Howto number 2:\
+----------------------\
+\
+########################################################\
+\
+                       __              __                  \
+                      /\\ \\            /\\ \\                 \
+  ___ ___      __     \\_\\ \\     __    \\ \\ \\____  __  __    \
+/' __` __`\\  /'__`\\   /'_` \\  /'__`\\   \\ \\ '__`\\/\\ \\/\\ \\   \
+/\\ \\/\\ \\/\\ \\/\\ \\L\\.\\_/\\ \\L\\ \\/\\  __/    \\ \\ \\L\\ \\ \\ \\_\\ \\  \
+\\ \\_\\ \\_\\ \\_\\ \\__/.\\_\\ \\___,_\\ \\____\\    \\ \\_,__/\\/`____ \\ \
+ \\/_/\\/_/\\/_/\\/__/\\/_/\\/__,_ /\\/____/     \\/___/  `/___/> \\\
+                                                     /\\___/\
+                                                     \\/__/ \
+                   ___    __                        \
+               __ /\\_ \\  /\\ \\                       \
+   __   __  __/\\_\\\\//\\ \\ \\ \\ \\____     __   _____   \
+ /'_ `\\/\\ \\/\\ \\/\\ \\ \\ \\ \\ \\ \\ '__`\\  /'__`\\/\\ '__`\\ \
+/\\ \\L\\ \\ \\ \\_\\ \\ \\ \\ \\_\\ \\_\\ \\ \\L\\ \\/\\  __/\\ \\ \\L\\ \\\
+\\ \\____ \\ \\____/\\ \\_\\/\\____\\\\ \\_,__/\\ \\____\\\\ \\ ,__/\
+ \\/___L\\ \\/___/  \\/_/\\/____/ \\/___/  \\/____/ \\ \\ \\/ \
+   /\\____/                                    \\ \\_\\ \
+   \\_/__/                                      \\/_/ \
+\
+########################################################\
+\
+ARTE +7 only/seulement\
+\
+HOWTO:\
+\
+WHAT YOU NEED:\
+rtmpdump and some skills\
+WHERE TO FIND IT:\
+If you have a package manager do as follow (aptitude (ubuntu) - port(macOS) - etc..)\
+example:\
+sudo apt-get install rtmpdump\
+sudo port install rtmpdump\
+\
+If you don't have one you can find it on the internet easily (google)\
+\
+ONCE YOU HAVE rtmpdump:\
+\
+We need to find two thing:\
+ 	the url of the sfw player\
+	the url of the rtmp file\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
+\cf0 ########################################################\
+FIRST: the SFW player\
+########################################################\
+Go to the url page where you want to extract the video:\
+Example:\
+http://videos.arte.tv/fr/videos/tracks--7054388.html\
+\
+TO FIND THE SFW URL:\
+--------------------\
+look at the source of the url.\
+ Do a search for 'blob' via the grep command\
+you'll find something like this:\
+\
+\
+"<param name="movie" value="value="http://videos.arte.tv/blob/web/i18n/view/player_23-3188338-data-4993762.swf?admin=false\
+\
+....\
+\
+var url_player = "http://videos.arte.tv/blob/web/i18n/view/player_23-3188338-data-4993762.swf";\
+var vars_player = \{\};\
+vars....\
+...\
+"\
+\
+Take the url_player value:\
+Here we have:\
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\
+http://videos.arte.tv/blob/web/i18n/view/player_11-3188338-data-4836231.swf\
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\
+\
+########################################################\
+SECOND: the url of the rtmp player\
+########################################################\
+\
+in our url "http://videos.arte.tv/fr/videos/tracks--7054388.html"\
+we have an id: 7054388 or tracks--7054388 put it in place of HERE\
+\
+http://videos.arte.tv/fr/do_delegate/videos/HERE,view,asPlayerXml.xml\
+\
+it should looks like: \
+"  http://videos.arte.tv/fr/do_delegate/videos/tracks--7054388,view,asPlayerXml.xml  "\
+\
+wget this url --> we could skip this step..\
+\
+you'll have a file that looks like this:\
+XXXXXXXXXXXXXXXXXX\
+<?xml version="1.0" encoding="UTF-8"?>\
+<videoref id="7054388">\
+<url>http://videos.arte.tv/fr/videos/tracks--7054388.html</url>\
+<videos>\
+<video lang="de" ref="http://videos.arte.tv/de/do_delegate/videos/tracks--7054390,view,strmVideoAsPlayerXml.xml" />\
+<video lang="fr" ref="http://videos.arte.tv/fr/do_delegate/videos/tracks--7054392,view,strmVideoAsPlayerXml.xml" />\
+</videos>\
+<subtitles>\
+</subtitles>\
+<services>\
+<service name="fullscreen" allow="true" allowEmbedded="true" />\
+<service name="share" allow="true" allowEmbedded="true" />\
+<service name="embed" allow="true" allowEmbedded="true" />\
+<service name="info" allow="false" allowEmbedded="true" />\
+</services>\
+<embed>\
+<disallow>defrancisation.com</disallow>\
+</embed>\
+</videoref>\
+XXXXXXXXXXXXXXXXXXXXXXXXX\
+\
+Choose between the 'fr' or 'de' version.\
+\
+here the fr version: "http://videos.arte.tv/fr/do_delegate/videos/tracks--7054392,view,strmVideoAsPlayerXml.xml"\
+we wget this new url.\
+you'll obtain a big xml file with a lot of informations we can process later on.. search for 'hd'  or 'sd'\
+\
+You'll have something like this: \
+\
+"<url quality="hd">rtmp://artestras.fcod.llnwd.net/a3903/o35/mp4:geo/videothek/EUR_DE_FR/arteprod/A7_SGT_ENC_08_047583-007-A_PG_HQ_FR?h=49c3ff5a01b4f96862f5312222c85204</url>"\
+\
+\
+Sucess!!!\
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\
+rtmp://artestras.fcod.llnwd.net/a3903/o35/mp4:geo/videothek/EUR_DE_FR/arteprod/A7_SGT_ENC_08_047583-007-A_PG_HQ_FR?h=49c3ff5a01b4f96862f5312222c85204\
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\
+\
+########################################################\
+########################################################\
+########################################################\
+########################################################\
+####FINAL###############################################\
+########################################################\
+########################################################\
+########################################################\
+########################################################\
+The two things we needed:\
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\
+http://videos.arte.tv/blob/web/i18n/view/player_11-3188338-data-4836231.swf\
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\
+rtmp://artestras.fcod.llnwd.net/a3903/o35/mp4:geo/videothek/EUR_DE_FR/arteprod/A7_SGT_ENC_08_047583-007-A_PG_HQ_FR?h=49c3ff5a01b4f96862f5312222c85204\
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\
+\
+Now we can use rtmpdump to download the video.\
+\
+We use the program in the commandline as follow\
+\
+rtmpdump -r "rtmp://..." -o output.flv -W "http://videos.arte.tv/blob/web/i18n/view/....swf"\
+\
+It'll look like:\
+\
+rtmpdump 	-r "rtmp://artestras.fcod.llnwd.net/a3903/o35/mp4:geo/videothek/EUR_DE_FR/arteprod/A7_SGT_ENC_08_047583-007-A_PG_HQ_FR?h=49c3ff5a01b4f96862f5312222c85204"\
+			-o Titre.flv\
+			-W "http://videos.arte.tv/blob/web/i18n/view/player_11-3188338-data-4836231.swf"\
+\
+And now you can convert your Titre.flv to mp4 via ffmpeg and this command:\
+\
+"ffmpeg -i titre.flv -vcodec copy -acodec copy output.mp4"  \
+\
+\
+http://www.arte.tv/flash/mediaplayer/mediaplayer.swf\
+http://videos.arte.tv/fr/videos/html/index--4268756.html\
+s_artestras_scst_geoFRDE_fr?s=1320220800&h=d0ae27535aafda72395535f3b657c607\
+rtmp://artestras.fc.llnwd.net/artestras\
+id=mediaspace2\
+\
+\
+rtmpdump -v -r "rtmp://artestras.fc.llnwd.net/artestras/Ks_artestras_scst_geoFRDE_fr?s=1320220800&h=d0ae27535aafda72395535f3b657c607" | open /Applications/VLC.app         \
+\
+\
+http://www.youtube.com/watch?v=8PuUnQCS7DQ}
