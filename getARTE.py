@@ -28,8 +28,12 @@ stderr = open("stderr.txt","wb")
 #mp=subprocess.call(['/usr/bin/rtmpdump', '-v', '-r', rtmpurl, '-o', '/tmp/test.flv'], stdout=stdout, stderr=stderr)
 #mpPID=mp.pid
 #print mpPID
-p=subprocess.Popen('/usr/bin/rtmpdump -v -r "' + rtmpurl + '" -o /tmp/test.flv', stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True)
-# for line in p.stdout.readlines():
-#     print line,
+# working
+#p=subprocess.Popen('/usr/bin/rtmpdump -v -r "' + rtmpurl + '" -o /tmp/test.flv', stdout=None, stderr=None, stdin=None, shell=True, close_fds=True)
+#stdout = open('logfile.log', 'w')
+#p=subprocess.Popen('/usr/bin/rtmpdump -v -r "' + rtmpurl + '" -o /tmp/test.flv', stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True, close_fds=True)
+p=subprocess.Popen('/usr/bin/rtmpdump -v -r "' + rtmpurl + '" -o /tmp/test.flv', stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE, shell=True, close_fds=True)
 
-retval = p.wait()
+print p.pid
+
+# ffmpeg -i /tmp/test.flv -vcodec copy -acodec copy outout2.mp4
